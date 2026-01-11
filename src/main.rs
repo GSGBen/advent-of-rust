@@ -15,6 +15,7 @@ fn main() {
 
     match (args.year.as_ref(), args.day.as_ref(), args.puzzle.as_ref()) {
         ("2025", "01", "01") => year2025::day01::puzzle01(puzzle_input),
+        ("2025", "01", "02") => year2025::day01::puzzle02(puzzle_input),
         _ => println!(
             "no solution written for year {}, day {}, puzzle {}",
             args.year, args.day, args.puzzle
@@ -35,7 +36,7 @@ fn parse_args() -> Args {
         "
 usage:
     {} <year num: e.g 2025> <day num: 01-12 or 01-25> <day puzzle: 01-02>
-from the directory with input/<year>/<day>_<day puzzle>.txt in it.
+from the directory with input/<year>/<day>.txt in it.
 ",
         proc_name
     );
@@ -50,7 +51,7 @@ fn get_puzzle_input(args: &Args) -> Vec<String> {
         .expect("couldn't get the current working directory?")
         .join("input")
         .join(&args.year)
-        .join(format!("{}_{}.txt", args.day, args.puzzle));
+        .join(format!("{}.txt", args.day));
 
     let file = File::open(&input_path).expect(&format!("couldn't open path {:#?}", input_path));
     let reader = BufReader::new(file);
