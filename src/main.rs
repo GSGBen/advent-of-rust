@@ -16,6 +16,7 @@ fn main() {
     match (args.year.as_ref(), args.day.as_ref(), args.puzzle.as_ref()) {
         ("2025", "01", "01") => year2025::day01::puzzle01(puzzle_input),
         ("2025", "01", "02") => year2025::day01::puzzle02(puzzle_input),
+        ("2025", "02", "01") => year2025::day02::puzzle01(puzzle_input),
         _ => println!(
             "no solution written for year {}, day {}, puzzle {}",
             args.year, args.day, args.puzzle
